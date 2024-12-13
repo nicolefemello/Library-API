@@ -58,7 +58,5 @@ app.listen(3000, () => {
     2. npm i express 
     3. npm nodemon
     4. npm i mongoose
-
-    user: nicfmello
-    password: LLE1oRVxYAfDysc0
+    
 */
