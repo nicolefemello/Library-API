@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+import app from './src/app.js';
 
 const app = express();
 app.use(express.json());
@@ -13,37 +14,6 @@ const Book = mongoose.model("Book", {
 
 app.get("/", (req, res) => {
   res.send("Welcome to the library!");
-});
-
-app.post("/books", async (req, res) => {
-  const book = new Book({
-    title: req.body.title,
-    author: req.body.author,
-    year: req.body.year,
-  });
-
-  await book.save();
-  res.send(book);
-});
-
-app.get("/books", async (req, res) => {
-  const books = await Book.find();
-  res.send("Livros encontrados:" + books);
-});
-
-app.put("/books/:id", async (req, res) => {
-  const book = await Book.findByIdAndUpdate(req.params.id, {
-    title: req.body.title,
-    author: req.body.author,
-    year: req.body.year
-  });
-
-  res.send("Livro atualizado com sucesso!");
-});
-
-app.delete("/books/:id", async (req, res) => {
-  const book = await Book.findByIdAndDelete(req.params.id);
-  res.send("Livro apagado com sucesso!");
 });
 
 app.listen(3000, () => {
