@@ -1,13 +1,15 @@
+import Book from '../model/bookModel.js';
+
 class LibraryController {
+
   static async createBook(req, res) {
-    const book = new Book({
+    const newBook = await Book.create({
       title: req.body.title,
       author: req.body.author,
-      year: req.body.year,
+      year: req.body.year
     });
 
-    await book.save();
-    res.send(book);
+    res.send(newBook);
   }
 
   static async showBooks(req, res) {
@@ -29,4 +31,7 @@ class LibraryController {
     const book = await Book.findByIdAndDelete(req.params.id);
     res.send("Livro apagado com sucesso!");
   }
+
 }
+
+export default LibraryController;
