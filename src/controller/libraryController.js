@@ -9,7 +9,7 @@ class LibraryController {
       year: req.body.year
     });
 
-    res.send(newBook);
+    res.send('Livro criado com sucesso!' + newBook);
   }
 
   static async showBooks(req, res) {
